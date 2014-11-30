@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 		<meta charset="ISO-8859-1">
+		<meta name="keywords" content="icaroviedo,Ícaro,Ícaro Obeso Muñiz,Ícaro Obeso">
+		<meta name="description" content="icaroviedo :: Cartografía, Topografía, Geografía, Catastro...">
+		<meta name="author" content="Ícaro Obeso Muñiz">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+  <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+  <link type="text/css" rel="stylesheet" href="icaroviedo.css"/>
+  <link rel="icon" 
+      type="image/png" 
+      href="images/favicon.ico" />
+  <title>icaroviedo :: Webmapping &amp; Data Visualization :: Datos de Valladolid</title>
+
+</head>
+<body>
+
+		<div id="header">
+		<h1><a href="index.html">
+		<img border="0" src="images/logo_k.png" alt="icaroviedo" width="320" height="78"></a>
+		icaroviedo</h1>
+		</div>
+
+
+  <div id="map" style="width: 95%; height: 600px; margin-left: 15px"></div>
+  <script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>    
+  <script src="47v.js"></script>
+  <script>
+	var map = L.map('map').setView([41.71, -4.80],9);
+
+
+L.geoJson(valladolid, {
+    style: function (feature) {
+        return { color: "white", weight:"1", opacity: 1, fillOpacity: 0.5, fillColor: "#5C9C78" };
+    },
+    onEachFeature: function(feature, layer){
+        layer.bindPopup("Municipio: " + feature.properties.MUNICIPIO + " <BR/> Código INE: " + feature.properties.CODMUN 
+        +" <BR/> Poblacion 1960: " + feature.properties.POB1960
+        +" <BR/> Poblacion 1970: " + feature.properties.POB1970
+        +" <BR/> Poblacion 1981: " + feature.properties.POB1981
+        +" <BR/> Poblacion 1991: " + feature.properties.POB1991
+        +" <BR/> Poblacion 2001: " + feature.properties.POB2001
+        +" <BR/> Poblacion 2010: " + feature.properties.POB2010
+        +" <BR/> Superficie: " + feature.properties.SUP
+        +" <BR/> Densidad de poblacion: " + feature.properties.DENSIDAD);
+    }
+}).addTo(map);
+	
+L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png').addTo(map); 
+
+
+	</script>
+
+<div class="textpanel">
+		<h2>Datos demográficos de la provincia de Valladolid</h2>
+		<h3>02.01.2014</h3>
+		<p>Mapa dinámico, elaborado con Leaflet que muestra datos del Instituto Nacional de Estadística 
+		(1). Este mapa es una muestra de las posibilidades que ofrecen las librerías Leaflet 
+		(2) o Openlayers, entre otras. Utilizando en este caso Leaflet, es 
+		posible vincular información contenida en bases de datos con información 
+		vectorial en formato GeoJSON (3). Por tanto, no es necesario montar un 
+		servidor de mapas y es posible ofrecer información de carácter 
+		geográfico con rapidez y mejorando la accesibilidad. En este ejemplo se 
+		muestran datos correspondientes a la provincia de Valladolid, que fueron 
+		los empleados en la práctica general de la asignatura Análisis y 
+		Evaluación de la Población, correspondiente al Grado de Geografía y 
+		Ordenación del Territorio de la Universidad de Oviedo (4).</p>
+		<p>(1) <a href="http://www.ine.es">INE</a><br>
+		(2)<a href="leafletjs.com/"> Leaflet</a><br>
+		(3) <a href="geojson.org">GeoJSON</a><br>
+		(4) <a href="http://geografia.uniovi.es/">geografia.uniovi.es</a></p>
+		<p>atrás <a href="index.html">&lt;&lt;</a></p>
+		</div>
+
+<div id="footer">
+		<h3>icaroviedo@gmail.com</h3>
+		<a href="https://www.facebook.com/icaroviedo">
+		<img src=images/rss/facebook_color.jpg alt="facebook"
+		style="max-width:100px; height:auto;"></a>
+		<a href="https://twitter.com/icaroviedo">
+		<img src=images/rss/twitter_color.jpg alt="twitter"
+		style="max-width:100px; height:auto;"></a>
+		<a href="http://es.linkedin.com/in/icaroviedo">
+		<img src=images/rss/linkedin_color.jpg alt="linkedin"
+		style="max-width:100px; height:auto;"></a>
+		<a href="https://plus.google.com/u/0/102311565442946512426">
+		<img src=images/rss/googleplus_color.jpg alt="googleplus"
+		style="max-width:100px; height:auto;"></a>
+		<a href="mailto:icaroviedo@gmail.com">
+		<img src=images/rss/mail_color.jpg alt="enviar correo"
+		style="max-width:100px; height:auto;"></a>
+		</div>
+
+
+ </body>
+</html>
